@@ -1,0 +1,51 @@
+"""Desktop design tokens derived from the project briefing."""
+
+
+class Colors:
+    BACKGROUND = "#FFFFFF"
+    SURFACE = "#F2F5F6"
+    TEXT = "#14181C"
+
+    ACCENT_100 = "#E6F2F4"
+    ACCENT = "#007E8F"
+    ACCENT_500 = "#007E8F"
+    ACCENT_HOVER = "#006C7B"
+    ACCENT_600 = "#006C7B"
+    ACCENT_TEXT = "#005965"
+    ACCENT_700 = "#005965"
+    ACCENT_DARK = "#002E34"
+    ACCENT_900 = "#002E34"
+    ACCENT_LIGHT = "#E6F2F4"
+
+    ATTENTION = "#FF9900"
+    ATTENTION_500 = "#FF9900"
+    ATTENTION_DARK = "#B56B00"
+    ATTENTION_700 = "#B56B00"
+
+    NEUTRAL_200 = "#E9EDED"
+    NEUTRAL_300 = "#D4DADB"
+    NEUTRAL_400 = "#B3BCBE"
+    NEUTRAL_500 = "#8D9799"
+    NEUTRAL_600 = "#6F7A7D"
+    NEUTRAL_700 = "#555F61"
+    NEUTRAL_900 = "#14181C"
+
+
+class Fonts:
+    FAMILY = "Archivo"
+    FALLBACK = "Segoe UI"
+    BODY_SIZE = 10
+    LABEL_SIZE = 9
+    TITLE_SIZE = 18
+    METRIC_SIZE = 25
+    KICKER_SIZE = 8
+
+
+class Metrics:
+    SIDEBAR_WIDTH = 214
+    HEADER_HEIGHT = 62
+    STATUS_HEIGHT = 28
+    RADIUS = 0
+    BORDER_STRONG = 2
+    BORDER_THIN = 1
+    PAGE_MARGIN = 20
