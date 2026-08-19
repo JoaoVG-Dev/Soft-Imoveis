@@ -1,0 +1,24 @@
+# TODO Discovery
+
+- Banco do Immobilis.
+- Arquivos `.DB` ou equivalentes.
+- Relacionamentos.
+- Schema.
+- Boleto.
+- BoletoLiq.
+- FluxoBoleto.
+- Banco utilizado.
+- Carteira.
+- Convênio.
+- CNAB.
+- Remessa.
+- Retorno.
+- Baixa.
+- Repasse.
+- Histórico.
+- Permissões.
+- Integração com site.
+- Migração.
+- Fontes oficiais Archivo: não localizadas em `src/assets/fonts` nem nos assets disponíveis; fallback temporário permanece até importação dos arquivos oficiais.
+- Arquivos `Documentação V1.dc.html` e `Soft-Imóveis Site v1.dc.html`: localizados e utilizados na V0.2 como referência visual, mas devem continuar versionados junto ao projeto quando houver repositório definitivo.
+- Assinatura/certificação do executável para ambientes com Device Guard, Smart App Control ou política corporativa de allowlist.

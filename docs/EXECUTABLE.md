@@ -16,7 +16,17 @@ e distribuído através de:
 PyInstaller
 ```
 
-## 2. Fluxo
+## 2. Repositório Oficial
+
+Toda execução, desenvolvimento, teste, documentação e build devem partir de:
+
+```powershell
+cd "C:\Users\DevJo\Documents\GitHub\Soft-Imoveis"
+```
+
+O workspace temporário usado durante a implementação inicial não é requisito operacional do projeto.
+
+## 3. Fluxo
 
 Build de desenvolvimento:
 
@@ -48,7 +58,7 @@ Verification
 Signed Release
 ```
 
-## 3. Executável Atual
+## 4. Executável Atual
 
 ```text
 Version: 0.2.0
@@ -57,7 +67,7 @@ Packaging: onedir
 Authenticode: NotSigned
 ```
 
-Build original:
+Build corrente gerado no repositório oficial:
 
 ```text
 dist/SoftImoveis/SoftImoveis.exe
@@ -69,7 +79,7 @@ Snapshot histórico:
 references/executables/v0.2.0/SoftImoveis.exe
 ```
 
-## 4. Desenvolvimento
+## 5. Desenvolvimento
 
 O fluxo oficial de desenvolvimento permanece:
 
@@ -77,7 +87,13 @@ O fluxo oficial de desenvolvimento permanece:
 .\run-dev.ps1
 ```
 
-## 5. Build
+Smoke test:
+
+```powershell
+.\run-dev.ps1 -SmokeTest
+```
+
+## 6. Build
 
 ```powershell
 .\build.ps1
@@ -90,7 +106,7 @@ Esse processo:
 - não exige assinatura;
 - não precisa executar o EXE caso Smart App Control o bloqueie.
 
-## 6. Release
+## 7. Release
 
 ```powershell
 .\release.ps1
@@ -105,7 +121,7 @@ Requisitos:
 - assinatura válida;
 - smoke test.
 
-## 7. Smart App Control
+## 8. Smart App Control
 
 Diagnóstico confirmado:
 
@@ -136,7 +152,7 @@ suficiente para a política aplicada.
 
 Isso não é bug da aplicação.
 
-## 8. Auditoria de Binários
+## 9. Auditoria de Binários
 
 Situação atual:
 
@@ -172,7 +188,7 @@ Status:
 PENDENTE DE VALIDAÇÃO DURANTE O PROCESSO DE SIGNED RELEASE
 ```
 
-## 9. Integridade
+## 10. Integridade
 
 SHA-256 do executável arquivado:
 
@@ -180,7 +196,7 @@ SHA-256 do executável arquivado:
 18F1E80D66E4C4738B16E03795D68BA268DD8F635F27CC4973ABD48A05C5F453
 ```
 
-## 10. Política de Arquivamento
+## 11. Política de Arquivamento
 
 ```text
 dist/
