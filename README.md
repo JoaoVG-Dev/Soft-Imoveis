@@ -16,6 +16,12 @@ python -m venv .venv
 
 O repositório oficial acima é a fonte canônica do projeto. Desenvolvimento, testes, documentação e builds devem ser feitos a partir dele.
 
+Se a máquina bloquear scripts PowerShell por política local, use o launcher CMD:
+
+```powershell
+.\run-dev.cmd
+```
+
 ## Visão Geral
 
 Aplicação desktop Windows em Python 3.12+ com PySide6/Qt Widgets, QSS centralizado, dados mockados e arquitetura preparada para banco, API, integrações bancárias e migração futura do sistema legado.
@@ -54,10 +60,17 @@ Não versione `.venv`, certificados, senhas, tokens, PFX ou segredos de CI.
 
 O fluxo oficial de desenvolvimento executa a aplicação via Python. Ele não depende de executar o EXE não assinado, portanto continua utilizável em máquinas com Smart App Control ativo.
 
+Em ambientes com execução de `.ps1` bloqueada, use:
+
+```powershell
+.\run-dev.cmd
+```
+
 Também é possível executar smoke test sem manter a janela aberta:
 
 ```powershell
 .\run-dev.ps1 -SmokeTest
+.\run-dev.cmd -SmokeTest
 ```
 
 ## Testes
