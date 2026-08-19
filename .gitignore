@@ -1,0 +1,9 @@
+dist/
+build/
+*.exe
+*.spec
+
+!references/
+!references/executables/
+!references/executables/**/
+!references/executables/**/SoftImoveis.exe

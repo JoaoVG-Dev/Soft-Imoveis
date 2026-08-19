@@ -1,0 +1,7 @@
+Soft-Imóveis Desktop
+Version: 0.2.0
+Artifact: SoftImoveis.exe
+Build Type: Development
+Packaging: PyInstaller onedir
+Authenticode: NotSigned
+SHA256: 18F1E80D66E4C4738B16E03795D68BA268DD8F635F27CC4973ABD48A05C5F453
