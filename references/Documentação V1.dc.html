@@ -1,0 +1,145 @@
+
+Soft-Imóveis Informática — site institucional
+Documentação da V1
+Documentação da V1 — site institucional Soft-Imóveis
+Registro do que foi desenhado, com quais valores e por quê. Cobre identidade, tokens, componentes, telas, comportamentos de movimento, origem do conteúdo e o que ficou pendente. Serve de base para a implementação em Django e para estender o mesmo sistema ao futuro painel de gestão.
+
+Versão
+V1 (congelada)
+Arquivos
+2 protótipos + 1 wireframe
+Telas
+9 navegáveis
+Base visual
+Modernist + marca
+1. Escopo e arquivos
+Arquivo	O que contém
+Soft-Imóveis Site v1.dc.html	Snapshot congelado da V1 — não editar.
+Soft-Imóveis Site.dc.html	Protótipo de trabalho; as próximas iterações acontecem aqui.
+Soft-Imóveis Wireframes.dc.html	Rodada lo-fi: site atual traçado (1a), duas direções de home (1b editorial, 1c produto), Clientes, Suporte, mobile e padrão de página interna.
+github.md	Vínculo com o repositório JoaoVG-Dev/Soft-Imoveis e mapa tela → fonte.
+A direção implementada é uma combinação das duas do wireframe: o hero espaçoso e os produtos em destaque da 1c, com a faixa de números e o índice numerado do site da 1b.
+
+2. Identidade preservada
+Nada da marca foi alterado. O que a V1 mantém, item por item:
+
+Teal #007E8F como cor principal e cor das ações primárias.
+Laranja #FF9900 como destaque — usado com parcimônia: janelas acesas do skyline, marcadores, faixa de chamada final, rótulos de conteúdo provisório.
+Preto/tinta #14181C para texto, réguas de 2px e o rodapé.
+Logo: círculo teal com skyline + wordmark “soft” (tinta) / “imóveis” (teal) / “informática” (cinza, letras espaçadas, 0.34em).
+Selo Desde 1993 em quatro lugares: badge do hero, medalhão circular no bloco institucional, lateral do suporte e rodapé.
+Slogan “Especialista em soluções de automação para imobiliárias” virou o H1 da home.
+3. Tokens
+A base é o design system Modernist (flat, réguas de 2px, raio zero, grade visível). Os tokens de cor foram sobrescritos com a paleta da marca, mantendo as rampas 100–900 para que hovers, fundos tingidos e estados pressionados sejam derivados e não inventados.
+
+3.1 Cor
+Token	Valor	Uso
+--color-accent (500)	#007E8F	Botão primário, links, número/letra de destaque, chip ativo.
+--color-accent-600	#006C7B	Hover e estado pressionado do primário.
+--color-accent-700	#005965	Texto em tamanho de corpo na cor da marca (contraste).
+--color-accent-100	#E6F2F4	Fundo de hover em linhas e cards, callout de LGPD.
+--color-accent-900	#002E34	Painel escuro do card de Locação.
+--color-accent-2 (500)	#FF9900	Faixa de chamada final, janelas do skyline, marcadores.
+--color-accent-2-700	#B56B00	Rótulos “texto de exemplo”, kickers sobre fundo claro.
+--color-text	#14181C	Texto, réguas de 2px, fundo do rodapé.
+--color-bg / --color-surface	#FFFFFF / #F2F5F6	Fundo padrão e faixas alternadas.
+--color-neutral-200…700	#E9EDED…#555F61	Divisores internos de 1px, legendas, texto secundário.
+3.2 Tipografia
+Papel	Valor	Onde
+Títulos	Archivo 700/800, letter-spacing −0.02 a −0.035em	H1, H2, H3, números da faixa de dados, nomes de clientes.
+Corpo e UI	Archivo 400/500/600	Parágrafos, campos, botões, listas.
+Kicker / rótulo	10–11.5px, 0.18–0.22em, caixa alta	Antetítulos de seção, breadcrumbs, legendas de dados.
+Escala fluida	clamp() em todo título	H1 da home: clamp(34px, 6.2vw, 74px).
+Mudança em relação à V1 em Django: Space Grotesk + Inter foram substituídos por Archivo nos dois papéis, que é a fonte do design system adotado. Mesmo caráter de grotesca técnica, uma família só para carregar. Se a preferência for voltar a Space Grotesk nos títulos, é a troca de um token.
+
+3.3 Espaçamento, forma e elevação
+Raio: 0 em tudo. A única exceção intencional são elementos circulares da marca (ícone do logo, medalhão do selo).
+Réguas: 2px na cor da tinta entre seções maiores; 1px neutro entre linhas de lista e células.
+Contêiner: largura máxima 1240px, respiro lateral de 24px.
+Ritmo vertical: seções em clamp(44px, 6vw, 80px); cabeçalhos de página em clamp(28px, 4vw, 52px).
+Sem sombras além de uma única sombra de scroll no cabeçalho fixo.
+4. Componentes
+Componente	Definição na V1
+Cabeçalho	Fixo no topo, fundo branco, régua de 2px embaixo, sombra só depois de 12px de scroll. Logo à esquerda, 5 links, botão “Demonstração”. Abaixo de 900px os links dão lugar ao botão hambúrguer e a um painel empilhado com os 8 itens originais.
+Botão primário	Preenchimento teal, texto branco 600, sem raio, rótulo à esquerda com seta. Hover: accent-600.
+Botão secundário	Borda de 2px na tinta, fundo transparente. Hover: fundo accent-100 e texto accent-700.
+Faixa de dados	Grade de células iguais divididas por 1px, número em Archivo 800 e legenda em caixa alta. Anima ao entrar na tela.
+Card de produto	Duas metades dentro de uma moldura de 2px: texto à esquerda (número, título, descrição, etiquetas, aviso de placeholder, ação) e painel de cor à direita reservado para captura real de tela.
+Linha de lista	Grade de duas ou três colunas, régua de 1px embaixo, hover accent-100. É o mesmo componente do índice do site, dos informativos e da lista de clientes — e a base da tabela do futuro painel.
+Chip de filtro	Borda de 2px; ativo = preenchimento teal e texto branco. Traz a contagem no rótulo (SP 17).
+Campo de formulário	Rótulo 12.5px 600 acima, borda de 2px na tinta, altura de toque ≥ 44px, foco com anel de 2px na cor da marca.
+Medalhão do selo	Círculo de 132px, borda de 2px, “desde / 1993 / soft-imóveis”.
+Faixa de chamada	Fundo laranja pleno, título display, botão escuro. Aparece uma vez por página, no fim.
+Rodapé	Fundo tinta, 4 colunas (marca + selo, seções, atendimento, contatos), linha final com copyright e link legal.
+5. Telas
+Tela	Composição
+Home	Hero com parallax → faixa de 4 números → carrossel de produtos → bloco “Bem vindo!” com o selo → marquee de clientes em duas faixas → índice numerado das 8 seções → duas notícias → faixa de chamada laranja.
+Clientes	Cabeçalho de página → faixa 31/4/22/33 → barra fixa com busca e chips por UF → lista alfabética agrupada por letra → chamada de demonstração. A busca ignora acentos e casa nome, cidade e UF.
+Suporte Técnico	Formulário (nome, e-mail, DDD/tel, empresa, produto, dúvida) com contador de caracteres e aviso de LGPD, ao lado de uma coluna de confiança: WhatsApp, telefone, Skype, horário, prazo de resposta e selo. Ao enviar, troca por uma confirmação com número de protocolo e os três próximos passos.
+A Empresa	Seis cards de subtópico (história, ética, canal de denúncias, privacidade, cookies, e-Book LGPD) + faixa levando a Parceiros.
+Produtos e Soluções	Os 3 produtos como linhas numeradas com ação de demonstração e atalho para suporte.
+Parceiros	Dois cards (ABES e mobilização social) com espaço reservado para logotipo.
+Atualizações	Duas escolhas grandes e explícitas: área de clientes e demonstrações.
+Informativos	Os 10 títulos como lista numerada, cada um com etiqueta de tema (fiscal, jurídico, técnico, social) + nota do Acrobat Reader.
+Contato	Três células grandes (escritório, WhatsApp, Skype) + 4 e-mails por departamento + desvio para o formulário de suporte.
+6. Movimento
+Todo o movimento é discreto e serve à leitura — nada bloqueia conteúdo nem depende de animação para ser compreendido.
+
+Efeito	Parâmetro	Comportamento
+Parallax do hero	grade 0.28 · skyline 0.13 · texto −0.06 · marcador −0.18/0.50	Quatro camadas em velocidades diferentes, aplicadas por translate3d dentro de requestAnimationFrame; o texto desaparece progressivamente até 620px de scroll.
+Revelação ao rolar	threshold 0.15 · 700ms	Seções entram com 20px de deslocamento e opacidade; há um destravamento de segurança em 2.2s caso o observador não dispare.
+Contadores	1100ms · ease-out cúbico	33 / 31 / 4 / 3 contam a partir de zero quando a faixa entra na tela.
+Carrossel de produtos	600ms cubic-bezier(.22,.7,.2,1)	Três lâminas com setas e três indicadores; navegação circular.
+Marquee de clientes	42s e 54s, linear, infinito	Duas faixas em sentidos opostos, conteúdo duplicado para o laço não ter costura.
+Cabeçalho	> 12px de scroll	Ganha sombra sutil; nunca muda de altura.
+7. Responsividade e acessibilidade
+Layout fluido por grid auto-fit e clamp(); a única regra de largura é a troca do menu por hambúrguer em 900px.
+Alvos de toque a partir de 44px em botões, chips e campos.
+Foco de teclado visível: anel de 2px na cor da marca com 2px de deslocamento, em todo elemento interativo.
+Texto de corpo na cor da marca usa accent-700, não o teal puro, por contraste.
+Corpo entre 13.5 e 17px com entrelinha 1.55–1.7 — pensado no público mais velho.
+Hierarquia semântica: um H1 por tela, H2 por seção, listas reais, formulário com rótulos associados.
+8. Origem do conteúdo
+Todo o texto vem das 9 páginas do site atual, enviadas em PDF, mais o levantamento em docs/08_UI_UX.md do repositório. O parágrafo institucional (“Sua visita é muito importante…”) e a assinatura estão literais, conforme decidido.
+
+Conteúdo	Origem
+Slogan, bloco “Bem vindo!”, notícias	PDF 1 (home)
+Subtópicos institucionais	PDF 2 (empresa)
+3 produtos	PDF 3 (produtos)
+2 parceiros	PDF 4 (parceiros)
+31 imobiliárias com cidade e UF	PDF 5 (clientes)
+Telefone, WhatsApp, Skype, 4 e-mails	PDF 6 (contato)
+Duas opções de atualização	PDF 7 (atualizações)
+Campos do formulário	PDF 8 (suporte)
+10 informativos	PDF 9 (informativos)
+Contagem conferida: 31 clientes — SP 17, RJ 9, PE 3, MG 2. O site antigo diz “alguns de nossos clientes”, então o número pode ser maior na realidade.
+
+9. Decisões
+Decisão	Motivo
+Menu de 8 itens → 5 grupos	Empresa (com Parceiros), Produtos, Clientes, Suporte (com Atualizações e Informativos), Contato. Os 8 continuam acessíveis pelo índice da home, pelo menu mobile e pelo rodapé — nada foi escondido.
+Skyline geométrico em vez de foto	Substitui a foto de banco de imagens sem depender de material novo; as janelas laranja fazem a marca aparecer no elemento de assinatura.
+Grade blueprint no hero	Mantém a ideia da V1 e dá o “ar técnico” pedido, sem gradiente e sem ilustração.
+Números antes do texto institucional	Credibilidade primeiro para quem chega pela primeira vez: 33 anos, 31 imobiliárias, 4 estados, 3 produtos.
+Laranja só como acento	Uma faixa laranja por página, no fechamento. Evita o efeito “site colorido demais” e mantém o teal como cor de ação.
+Protocolo no suporte	Dá ao cliente prova de que a dúvida entrou — é o principal ponto de desconfiança de um formulário.
+10. Pendências
+Descrições reais dos 3 produtos — as atuais estão marcadas “texto de exemplo” na tela.
+Logo em vetor — o wordmark e o ícone estão reconstruídos em HTML; o SVG oficial deve substituí-los.
+Capturas de tela dos sistemas — os painéis de cor dos cards de produto são espaços reservados.
+Logotipo da ABES e da iniciativa social.
+Notícias — os dois itens ainda são os de 2020; o bloco espera conteúdo novo.
+Horário e SLA — “seg a sex, 9h–18h” e “até 1 dia útil” precisam de confirmação da empresa antes de ir ao ar.
+Conteúdo dos subtópicos institucionais e dos 10 informativos (hoje só existem os títulos).
+Código da V1 em Django — não está no repositório; a recriação partiu dos PDFs e da documentação.
+11. Extensão para o painel de gestão
+Nada na V1 fecha portas para uma interface de dashboard. O que já está pronto para reuso:
+
+Densidade: a linha de lista com régua de 1px e hover tingido é uma linha de tabela — só falta cabeçalho fixo e ordenação.
+Filtros: busca sem acento + chips com contagem é o padrão de toda listagem (contratos, boletos, inadimplência).
+Formulários: rótulo acima, borda de 2px, foco de 2px — funciona em formulário longo de cadastro sem alteração.
+Navegação: a grade de células iguais e as réguas de 2px suportam um menu lateral de módulos; a rampa 100–900 já dá os estados de item selecionado, hover e desabilitado.
+Cor: teal para ação, laranja para atenção — em painel, laranja passa a marcar pendência e vencimento, sem inventar cor nova. Falta definir os estados de erro e sucesso (não existem na V1 do site).
+A decidir no painel, não agora: paleta semântica de status (erro, alerta, sucesso, neutro), densidade de tabela (compacta vs confortável), comportamento do menu lateral em 1366×768 e tratamento de valores monetários.
+
+Desde 1993 © Soft-Imóveis Informática
+Documento interno de design
